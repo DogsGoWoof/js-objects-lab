@@ -1,28 +1,30 @@
 const game = {
-    party: [],
-    gyms: [
-      { location: "Pewter City", completed: false, difficulty: 1 },
-      { location: "Cerulean City", completed: false, difficulty: 2 },
-      { location: "Vermilion City", completed: false, difficulty: 3 },
-      { location: "Celadon City", completed: false, difficulty: 4 },
-      { location: "Fuchsia City", completed: false, difficulty: 5 },
-      { location: "Saffron City", completed: false, difficulty: 6 },
-      { location: "Cinnabar Island", completed: false, difficulty: 7 },
-      { location: "Viridian City", completed: false, difficulty: 8 },
+  party: [],
+  gyms: [
+    { location: "Pewter City", completed: false, difficulty: 1 },
+    { location: "Cerulean City", completed: false, difficulty: 2 },
+    { location: "Vermilion City", completed: false, difficulty: 3 },
+    { location: "Celadon City", completed: false, difficulty: 4 },
+    { location: "Fuchsia City", completed: false, difficulty: 5 },
+    { location: "Saffron City", completed: false, difficulty: 6 },
+    { location: "Cinnabar Island", completed: false, difficulty: 7 },
+    { location: "Viridian City", completed: false, difficulty: 8 },
     ],
-    items: [
-      { name: "potion", quantity: 4 },
-      { name: "pokeball", quantity: 8 },
-      { name: "rare candy", quantity: 99 },
-    ],
-  }
+  items: [
+    { name: "potion", quantity: 4 },
+    { name: "pokeball", quantity: 8 },
+    { name: "rare candy", quantity: 99 },
+  ],
+}
 
 //console.dir(pokemon, { maxArrayLength: null });
 //Excercise 1
+
 console.log(pokemon[58].name);
 
-//Exercise 2
-//console.log(game);
+// Exercise 2
+
+// console.log(game);
 
 /*
 Exercise 3
@@ -86,6 +88,7 @@ for (let i = 0; i < game.gyms.length; i++) {
   }
 }
 
+// console.log(structuredClone(game.gyms))
 // console.log(game);
 
 /*
@@ -144,7 +147,7 @@ After writing this method, call it and pass in a Pokemon object of your choice f
 Solve Exercise 10 here:
 */
 
-game.catchPokemon = (pokemonObj) => {
+game.catchPokemon = function (pokemonObj) {
   game.party.push(pokemonObj);
 }
 
@@ -163,9 +166,9 @@ Also, log the `game.items` array to confirm that the pokeball quantity is being 
 Solve Exercise 11 here:
 */
 
-console.log(game);
+// console.log(structuredClone(game.items));
 
-game.catchPokemon = (pokemonObj) => {
+game.catchPokemon = function (pokemonObj) {
   game.party.push(pokemonObj);
   game.items[1].quantity -= 1;
 }
@@ -188,7 +191,7 @@ for (let i = 0; i < game.gyms.length; i++) {
   }
 }
 
-// console.log(game.gyms);
+// console.log(structuredClone(game.gyms));
 
 /*
 Exercise 13
@@ -213,7 +216,7 @@ For example, if five gym objects have a value of `true` on their `completed` pro
 Solve Exercise 13 here:
 */
 
-game.gymStatus = () => {
+game.gymStatus = function () {
   const gymTally = {
     completed: 0,
     incomplete: 0
@@ -228,7 +231,7 @@ game.gymStatus = () => {
   console.log(gymTally);
 }
 
-// game.gymStatus();
+game.gymStatus();
 
 /*
 Exercise 14
@@ -242,7 +245,7 @@ This method should:
 Solve Exercise 14 here:
 */
 
-game.partyCount = () => {
+game.partyCount = function () {
   return game.party.length;
 }
 
@@ -307,7 +310,7 @@ Solve Exercise 18 here:
 
 game.collection = [];
 
-game.catchPokemon = (pokemonObj) => {
+game.catchPokemon = function (pokemonObj) {
   if (game.party.length < 6) {
     game.party.push(pokemonObj);
     game.items[1].quantity -= 1;
@@ -332,7 +335,7 @@ Also, ensure that the Pokemon isn't added to the `game.party` or the `game.colle
 Solve Exercise 19 here:
 */
 
-game.catchPokemon = (pokemonObj) => {
+game.catchPokemon = function (pokemonObj) {
   if (game.items[1].quantity === 0) {
     console.log("You are out of pokeballs!");
   } else if (game.party.length < 6) {
@@ -358,8 +361,22 @@ If there is not a match, then return a string noting that the selected Pokemon d
 
 Solve Exercise 20 here:
 */
+// const pokeByName = [];
+// for (let i = 0; i < pokemon.length; i++) {
+//   pokeByName.push(pokemon[i].name);
+// }
+// console.log(pokeByName);
+// // console.log(pokeByName.includes("Mew"));
+// const pokeSearch = (monName) => {
+//   const fixedSpelling = monName.at(0).toUpperCase() + monName.slice(1).toLowerCase();
+//   for (let monster in pokemon) {
+//     if (pokemon[monster].name === fixedSpelling) {
+//       console.log(true);
+//     }
+//   }
+// }
 
-game.catchPokemon = (pokeName) => {
+game.catchPokemon = function (pokeName) {
   let pokeQuery = 0;
   for (const mon of pokemon) {
     if (mon.name.toUpperCase() === pokeName.toUpperCase()) {
@@ -421,7 +438,8 @@ for (let i = 0; i < pokemon.length; i++) {
     object[pokemon[i].type] = [];
   }
 };
- console.log("Sort by type:", object);
+console.log("Sort by type:", object);
+
 // const pokeTypes = [];
 // const listByTypes = {}
 // for (let i = 0; i < pokemon.length; i++) {
